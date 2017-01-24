@@ -64,7 +64,6 @@ resources:
             fixed_ips:
                 - subnet_id: { get_param: subnet_name }
             security_groups:
-                - default
                 - { get_param: ssh_security_group }
     association:
         type: OS::Nova::FloatingIPAssociation
