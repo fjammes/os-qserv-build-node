@@ -1,5 +1,18 @@
 #cloud-config
 
+groups:
+- docker
+
+users:
+- name: qserv
+  gecos: "Qserv daemon"
+  groups: docker
+  lock-passwd: true
+  shell: /bin/bash
+  sudo: "ALL=(ALL) NOPASSWD:ALL"
+  ssh-authorized-keys:
+    - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC5WpbPUK0+Wdj/q5woCm4vvy4lEFvzOus5LNbxE0uJZvJ83zUpcYLbgkOzP23fB/HSbQ2bAlON0wCWDoqf7doCs8ZMFNSgFAIbu1Cebgp5LUdHuZunrUkWyROnDHLbqeDLi2EKoL7lCwXqCC4IjVRn2+YuVVc0uQFzX/uYW/TAvouDIxDJEIgU4xH0Bs2/uVJrDHXtzqsg+5O3cQJbusJvsU9v/f63dU0mH41Ogtovms0v3THvmPebuFXfWkV2utv05jJ2e+Gxfs8T8IaKX8P/Eg5i7hPBHUUqWIqaAjWVFOZ8DsHBm9ixYAJgmU5PIJ+hj5b3Db3l7dJLw4/ts2yx qserv@clrinfopc04 
+
 package_upgrade: true
 
 packages:
@@ -7,3 +20,5 @@ packages:
 
 #runcmd:
 #- [/bin/systemctl, restart,  docker.service]
+
+final_message: "FINDMEFINDMEFINDMEFINDME The system is finally up, after $UPTIME seconds FINDMEFINDMEFINDMEFINDME"
