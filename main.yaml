@@ -72,7 +72,7 @@ resources:
             server_id: { get_resource: instance }
 
 outputs:
-    gateway_ip:
-        description: IP to connect to
-        value: { get_attr: [ instance, first_address ] }
+    instance_public_ip:
+        description: Floating IP address of instance in public network
+        value: { get_attr: [ floating_ip, ip] }
 # EOF

@@ -4,21 +4,20 @@ groups:
 - docker
 
 users:
+- default
 - name: qserv
-  gecos: "Qserv daemon"
+  gecos: "Qserv user"
   groups: docker
   lock-passwd: true
   shell: /bin/bash
   sudo: "ALL=(ALL) NOPASSWD:ALL"
-  ssh-authorized-keys:
-    - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC5WpbPUK0+Wdj/q5woCm4vvy4lEFvzOus5LNbxE0uJZvJ83zUpcYLbgkOzP23fB/HSbQ2bAlON0wCWDoqf7doCs8ZMFNSgFAIbu1Cebgp5LUdHuZunrUkWyROnDHLbqeDLi2EKoL7lCwXqCC4IjVRn2+YuVVc0uQFzX/uYW/TAvouDIxDJEIgU4xH0Bs2/uVJrDHXtzqsg+5O3cQJbusJvsU9v/f63dU0mH41Ogtovms0v3THvmPebuFXfWkV2utv05jJ2e+Gxfs8T8IaKX8P/Eg5i7hPBHUUqWIqaAjWVFOZ8DsHBm9ixYAJgmU5PIJ+hj5b3Db3l7dJLw4/ts2yx qserv@clrinfopc04 
 
 package_upgrade: true
 
 packages:
-- nmap-ncat 
+- nmap-ncat
+- git
 
-#runcmd:
-#- [/bin/systemctl, restart,  docker.service]
+runcmd:
+- 'sudo -u qserv bash -c "cd /home/qserv && git clone https://github.com/lsst/qserv.git src/qserv"' 
 
-final_message: "FINDMEFINDMEFINDMEFINDME The system is finally up, after $UPTIME seconds FINDMEFINDMEFINDMEFINDME"
