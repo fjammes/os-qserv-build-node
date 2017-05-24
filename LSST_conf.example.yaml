@@ -2,10 +2,10 @@
 
 parameters:
    # Use `openstack flavor list`
-   flavor: n-rcd1.large 
+   flavor: n-rcd1.large
    # Source image id
-   image_id: d36cc0c5-474f-477d-a62d-3df3b8988005
-   key_name: lsst-fabricejammes-qserv
+   image_id: 101da600-5938-44ed-8fb0-02f89c6fa11b
+   key_name: lsst-fabricejammes-build
    network_name: LSST-net
    # Prefix for machine name
    prefix: fjammes-qserv

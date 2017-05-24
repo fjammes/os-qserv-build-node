@@ -15,9 +15,22 @@ users:
 package_upgrade: true
 
 packages:
-- nmap-ncat
+- byobu
+- cmake
+- docker
+- epel-release
+- gcc
+- gcc-c++
+- lsof
 - git
+- nmap-ncat
+- vim
 
 runcmd:
-- 'sudo -u qserv bash -c "cd /home/qserv && git clone https://github.com/lsst/qserv.git src/qserv"' 
+- 'su -c "cd /home/qserv && git clone https://github.com/lsst/qserv.git src/qserv" qserv'
+- 'su -c "cd /home/qserv/src && git clone https://github.com/fjammes/dot-config.git" qserv'
+- 'systemctl start docker'
+- 'su -c "docker pull qserv/qserv:dev" qserv'
+- 'su -c "/home/qserv/src/qserv/admin/admin/tools/docker/3_build-git-image.sh -R tickets/DM-10525" qserv'
+- 'su -c "cd /home/qserv/src/dot-config && ./configure.sh" qserv'
 
