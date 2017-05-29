@@ -15,15 +15,19 @@ users:
 package_upgrade: true
 
 packages:
+# Install epel directory first to enable
+# some packages installation (like byobu)
+- epel-release
 - byobu
 - cmake
 - docker
-- epel-release
 - gcc
 - gcc-c++
+- golang
 - lsof
 - git
 - nmap-ncat
+- python-devel
 - vim
 
 runcmd:
@@ -31,6 +35,6 @@ runcmd:
 - 'su -c "cd /home/qserv/src && git clone https://github.com/fjammes/dot-config.git" qserv'
 - 'systemctl start docker'
 - 'su -c "docker pull qserv/qserv:dev" qserv'
-- 'su -c "/home/qserv/src/qserv/admin/admin/tools/docker/3_build-git-image.sh -R tickets/DM-10525" qserv'
+- 'su -c "/home/qserv/src/qserv/admin/tools/docker/3_build-git-image.sh -R tickets/DM-10525" qserv'
 - 'su -c "cd /home/qserv/src/dot-config && ./configure.sh" qserv'
 
