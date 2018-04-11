@@ -7,6 +7,9 @@ openstack stack create --template main.yaml -e LSST_conf.example.yaml qserv-buil
 # Show stack
 openstack stack show qserv-build-node
 
+# ssh (using correct key)
+ssh centos@141.142.211.178
+
 # Delete stack
 openstack stack delete qserv-build-node
 ```
