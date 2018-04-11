@@ -4,7 +4,8 @@ parameters:
    # Use `openstack flavor list`
    flavor: n-rcd1.large
    # Source image id
-   image_id: 101da600-5938-44ed-8fb0-02f89c6fa11b
+   # WARN update me
+   image_id: 345f8f1c-783e-4750-a6b9-894cc73bcfac 
    key_name: lsst-fabricejammes-build
    network_name: LSST-net
    # Prefix for machine name
