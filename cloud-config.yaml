@@ -32,13 +32,13 @@ packages:
 
 runcmd:
 # Install EPEL packages
-- 'sudo yum install byobu htop'
+- 'yum install -y byobu htop'
   # Disable SELinux
 - 'setenforce 0'
 - 'sed -i "s/SELINUX=enforcing/SELINUX=disabled/" /etc/sysconfig/selinux'
   # Install vim8
-- '# curl -L https://copr.fedorainfracloud.org/coprs/mcepl/vim8/repo/epel-7/mcepl-vim8-epel-7.repo -o /etc/yum.repos.d/mcepl-vim8-epel-7.repo'
-- 'yum update -y vim-minimal && yum install vim'
+- 'curl -L https://copr.fedorainfracloud.org/coprs/mcepl/vim8/repo/epel-7/mcepl-vim8-epel-7.repo -o /etc/yum.repos.d/mcepl-vim8-epel-7.repo'
+- 'yum update -y vim-common vim-minimal && yum install -y vim'
 - 'su -c "cd /home/qserv && git clone https://github.com/lsst/qserv.git src/qserv" qserv'
 - 'su -c "cd /home/qserv/src && git clone https://github.com/fjammes/dot-config.git" qserv'
 - 'systemctl start docker'
