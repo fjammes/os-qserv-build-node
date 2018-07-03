@@ -1,0 +1,13 @@
+# Environment file for galactica @ LIMOS
+# Used for creating a Docker Registry Mirror
+
+parameters:
+   flavor: c1.xxlarge 
+   image_id: 67727261-7b87-4b6c-8059-4d0098e55c08
+   key_name: fjammes-qserv
+   network_name: petasky-net
+   subnet_name: ff9cc4da-1f68-4cf1-910d-1c8c2c515b4e 
+   # Prefix for machine name
+   prefix: fjammes-qserv
+   # Use `openstack security group list`
+   ssh_security_group: ab82bfbf-9176-4758-83d5-bbc3559b483c 

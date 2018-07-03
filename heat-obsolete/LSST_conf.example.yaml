@@ -1,0 +1,15 @@
+# Environment file for LSST @ NCSA
+
+parameters:
+   # Use `openstack flavor list`
+   flavor: n-rcd1.large
+   # Source image id
+   # WARN update me
+   image_id: 345f8f1c-783e-4750-a6b9-894cc73bcfac 
+   key_name: lsst-fabricejammes-build
+   network_name: LSST-net
+   # Prefix for machine name
+   prefix: fjammes-qserv
+   subnet_name: 2f2a1da4-1234-4c23-be98-0e57c130c342
+   # Use `openstack security group list`
+   ssh_security_group: fd0e1652-7306-4ff8-9e66-1c261b0aa4ea
