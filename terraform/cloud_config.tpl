@@ -57,28 +57,9 @@ users:
   sudo: ALL=(ALL) NOPASSWD:ALL
 
 runcmd:
-  # Install EPEL packages
-  - 'yum install -y byobu htop'
-  # Disable SELinux
-  - 'setenforce 0'
-  - 'sed -i "s/SELINUX=enforcing/SELINUX=disabled/" /etc/sysconfig/selinux'
-  - [sed, -i, 's|Environment="KUBELET_CGROUP_ARGS=|#Environment="KUBELET_CGROUP_ARGS=|', /etc/systemd/system/kubelet.service.d/10-kubeadm.conf]
-  # Data and log are stored on Openstack host
-  - [mkdir, -p, /qserv/custom]
-  - [mkdir, /qserv/data]
-  - [mkdir, /qserv/log]
-  - [mkdir, /qserv/tmp]
-  - [mkdir, /mnt/qserv]
-  - [chown, -R, '1000:1000', /qserv]
-  - [/bin/systemctl, daemon-reload]
-  - [/bin/systemctl, restart,  docker]
-  - [/bin/systemctl, restart,  systemd-sysctl]
-  # Install vim8
-  - 'curl -L https://copr.fedorainfracloud.org/coprs/mcepl/vim8/repo/epel-7/mcepl-vim8-epel-7.repo -o /etc/yum.repos.d/mcepl-vim8-epel-7.repo'
-  - 'yum update -y vim-common vim-minimal && yum install -y vim'
-  - 'su -c "cd /home/qserv && git clone https://github.com/lsst/qserv.git src/qserv" qserv'
-  - 'su -c "cd /home/qserv/src && git clone https://github.com/fjammes/dot-config.git" qserv'
-  - 'systemctl start docker'
+  - 'su -c "mkdir /home/qserv/src && cd /home/qserv/src && git clone https://github.com/fjammes/dot-config.git" qserv'
+  - '/home/qserv/src/dot-config/centos/prepare.sh'
+  - 'su -c "/home/qserv/src/dot-config/configure.sh" qserv'
+  - 'su -c "cd /home/qserv/src && git clone https://github.com/lsst/qserv.git" qserv'
   - 'su -c "docker pull qserv/qserv:dev" qserv'
 # - 'su -c "/home/qserv/src/qserv/admin/tools/docker/3_build-git-image.sh -R tickets/DM-13979" qserv'
-  - 'su -c "cd /home/qserv/src/dot-config && ./configure.sh" qserv'
