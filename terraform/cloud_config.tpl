@@ -60,6 +60,3 @@ runcmd:
   - 'su -c "mkdir /home/qserv/src && cd /home/qserv/src && git clone https://github.com/fjammes/dot-config.git" qserv'
   - '/home/qserv/src/dot-config/centos/prepare.sh'
   - 'su -c "/home/qserv/src/dot-config/configure.sh" qserv'
-  - 'su -c "cd /home/qserv/src && git clone https://github.com/lsst/qserv.git" qserv'
-  - 'su -c "docker pull qserv/qserv:dev" qserv'
-# - 'su -c "/home/qserv/src/qserv/admin/tools/docker/3_build-git-image.sh -R tickets/DM-13979" qserv'
